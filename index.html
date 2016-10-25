@@ -1,0 +1,812 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Assignment 5</title>
+
+
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+	<style type="text/css">
+		body {
+		display: block;
+		margin: 0px;
+		overflow: hidden;
+		padding: 0px;
+		}
+		#tooltip {   
+			position: absolute;           
+			text-align: center;
+			padding: 20px;             
+			margin: 10px;
+			font: 12px sans-serif;        
+			background: lightsteelblue;   
+			border: 1px;      
+			border-radius: 2px;           
+			pointer-events: none;         
+		}
+		#tooltip h4{
+			margin:0;
+			font-size:14px;
+		}
+		#tooltip{
+			background:rgba(0,0,0,0.9);
+			border:1px solid grey;
+			border-radius:5px;
+			font-size:12px;
+			width:auto;
+			padding:4px;
+			color:white;
+			opacity:0;
+		}
+		#tooltip table{
+			table-layout:fixed;
+		}
+		#tooltip tr td{
+			padding:0;
+			margin:0;
+		}
+		#tooltip tr td:nth-child(1){
+			width:50px;
+		}
+		#tooltip tr td:nth-child(2){
+			text-align:center;
+		}
+
+		.myaxis,
+		.frame{
+			shape-rendering: crispEdges;
+		}
+		
+		.myaxis path,
+		.myaxis line{
+			fill: none;
+			stroke: black;
+			
+		}
+		
+		.myaxis text {
+			font-family: sans-serif;
+			font-size: 11px;
+			fill:black;
+		}
+
+		.MyPath1 {
+				fill: none;
+				stroke: #69b0c8;
+				stroke-width: 2px;
+		}
+			svg {
+			font: 10px sans-serif;
+			padding: 10px;
+		}
+		
+		.axis,
+		.frame {
+			shape-rendering: crispEdges;
+		}
+		
+		.axis line {
+			stroke: #ddd;
+		}
+		
+		.axis path {
+			display: none;
+		}
+		
+		.frame {
+			fill: none;
+			stroke: #aaa;
+		}
+		
+		circle {
+			fill-opacity: .7;
+		}
+		
+		circle.hidden {
+			fill: #ccc !important;
+		}
+		
+		.extent {
+			fill: #000;
+			fill-opacity: .125;
+			stroke: #fff;
+		}
+	</style>
+  	<script src="makeMap.js"></script>
+	<script src="changeMap.js"></script>
+	<script src="seeChange.js"></script>
+	<script src="linechart.js"></script>
+	<script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/scripts.js"></script>
+	<script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+  	<script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
+  	<script type="text/javascript" src="http://underscorejs.org/underscore-min.js"></script>
+</head>
+  
+<body style="overflow:scroll;">
+    <div class="container-fluid">
+	<div class="row">
+		<div class="col-md-12">
+			<h3>
+				Assignment 5
+			</h3>
+			<p>
+				Wu Xiaojie 5130309295
+			</p>
+		</div>
+	</div>
+	
+	<div class="row">
+		<div class="col-md-12">
+			<div class="tabbable" id="tabs-411012">
+				<ul class="nav nav-tabs">
+					<li class="active">
+						<a href="#panel-0" data-toggle="tab">overview-log</a>
+					</li>
+					<li>
+						<a href="#panel-1" data-toggle="tab">GDP(billion)</a>
+					</li>
+					<li>
+						<a href="#panel-2" data-toggle="tab">GDP Growth</a>
+					</li>
+					<li>
+						<a href="#panel-3" data-toggle="tab">Internet users</a>
+					</li>
+					<li>
+						<a href="#panel-4" data-toggle="tab">Rural Population</a>
+					</li>
+					<li>
+						<a href="#panel-5" data-toggle="tab">Population female(% of total)</a>
+					</li>
+					<li>
+						<a href="#panel-6" data-toggle="tab">Population growth (annual %)</a>
+					</li>
+					<li>
+						<a href="#panel-7" data-toggle="tab">Population total</a>
+					</li>
+					<li>
+						<a href="#panel-8" data-toggle="tab">GDP per capita growth (annual %)</a>
+					</li>
+					<li>
+						<a href="#panel-9" data-toggle="tab">GDP per capita (current US$)</a>
+					</li>
+					<li>
+						<a href="#panel-10" data-toggle="tab">Labor force total</a>
+					</li>
+					<li>
+						<a href="#panel-11" data-toggle="tab">Labor force female (% of total labor force)</a>
+					</li>
+					<li>
+						<a href="#panel-12" data-toggle="tab">Armed forces personnel (% of total labor force)</a>
+					</li>
+					
+					<li>
+						<a href="#panel-13" data-toggle="tab">Surface area (sq. km)</a>
+					</li>
+					<li>
+						<a href="#panel-14" data-toggle="tab">Population density</a>
+					</li>
+					<li>
+						<a href="#panel-15" data-toggle="tab">Arable land</a>
+					</li>
+					<li>
+						<a href="#panel-16" data-toggle="tab">Unemployment total</a>
+					</li>
+					<li>
+						<a href="#panel-17" data-toggle="tab">Unemployment female</a>
+					</li>
+				</ul>
+				<div class="tab-content">
+					<div class="tab-pane active" id="panel-0">
+						<p>	
+							<div id="container-0"></div>	
+							<script src="dimple.js"></script>
+							<script src="viewlog.js"></script>
+							
+						</p>
+					</div>
+					<div class="tab-pane" id="panel-1">
+						<p>	
+							<button type="button" class="btn btn-default" onclick="changeMap('NY.GDP.MKTP.CD','#container-1','YR2010');">
+								YR2010
+							</button>
+							<button type="button" class="btn btn-default" onclick="changeMap('NY.GDP.MKTP.CD','#container-1','YR2011');">
+								YR2011
+							</button>
+							<button type="button" class="btn btn-default" onclick="changeMap('NY.GDP.MKTP.CD','#container-1','YR2012');">
+								YR2012
+							</button>
+							<button type="button" class="btn btn-default" onclick="changeMap('NY.GDP.MKTP.CD','#container-1','YR2013');">
+								YR2013
+							</button>
+							<button type="button" class="btn btn-default" onclick="changeMap('NY.GDP.MKTP.CD','#container-1','YR2014');">
+								YR2014
+							</button>
+							<button type="button" class="btn btn-default" onclick="seeChange('NY.GDP.MKTP.CD','#container-1');">
+								See Changes
+							</button>
+							<div id="container-1"></div>		
+							
+							<script type="text/javascript">
+							makeMap('NY.GDP.MKTP.CD','#container-1',"YR2010");
+							</script>
+							
+						</p>
+					</div>
+					<div class="tab-pane" id="panel-2">
+						<p>
+							<button type="button" class="btn btn-default" onclick="changeMap('NY.GDP.MKTP.KD.ZG','#container-2','YR2010');">
+								YR2010
+							</button>
+							<button type="button" class="btn btn-default" onclick="changeMap('NY.GDP.MKTP.KD.ZG','#container-2','YR2011');">
+								YR2011
+							</button>
+							<button type="button" class="btn btn-default" onclick="changeMap('NY.GDP.MKTP.KD.ZG','#container-2','YR2012');">
+								YR2012
+							</button>
+							<button type="button" class="btn btn-default" onclick="changeMap('NY.GDP.MKTP.KD.ZG','#container-2','YR2013');">
+								YR2013
+							</button>
+							<button type="button" class="btn btn-default" onclick="changeMap('NY.GDP.MKTP.KD.ZG','#container-2','YR2014');">
+								YR2014
+							</button>
+							<button type="button" class="btn btn-default" onclick="seeChange('NY.GDP.MKTP.KD.ZG','#container-2');">
+								See Changes
+							</button>
+							<div id="container-2"></div>		
+							<svg>
+								<radialGradient id="tip">
+								<stop offset="0" stop-color="white"/>
+								<stop offset="0.2" stop-color="pink"/>
+								<stop offset="1" stop-color="white"/>
+								</radialGradient>
+							</svg>
+							<script type="text/javascript">
+							makeMap('NY.GDP.MKTP.KD.ZG','#container-2',"YR2010");
+							</script>
+							
+						</p>
+					</div>
+					<div class="tab-pane active" id="panel-3">
+						<p>	
+							<button type="button" class="btn btn-default" onclick="changeMap('IT.NET.USER.P2','#container-3','YR2010');">
+								YR2010
+							</button>
+							<button type="button" class="btn btn-default" onclick="changeMap('IT.NET.USER.P2','#container-3','YR2011');">
+								YR2011
+							</button>
+							<button type="button" class="btn btn-default" onclick="changeMap('IT.NET.USER.P2','#container-3','YR2012');">
+								YR2012
+							</button>
+							<button type="button" class="btn btn-default" onclick="changeMap('IT.NET.USER.P2','#container-3','YR2013');">
+								YR2013
+							</button>
+							<button type="button" class="btn btn-default" onclick="changeMap('IT.NET.USER.P2','#container-3','YR2014');">
+								YR2014
+							</button>
+							<button type="button" class="btn btn-default" onclick="seeChange('IT.NET.USER.P2','#container-3');">
+								See Changes
+							</button>
+							<div id="container-3"></div>		
+							<svg>
+								<radialGradient id="tip">
+								<stop offset="0" stop-color="white"/>
+								<stop offset="0.2" stop-color="pink"/>
+								<stop offset="1" stop-color="white"/>
+								</radialGradient>
+							</svg>
+							<script type="text/javascript">
+							makeMap('IT.NET.USER.P2','#container-3',"YR2010");
+							</script>
+							
+						</p>
+					</div>
+					<div class="tab-pane active" id="panel-4">
+						<p>	
+							<button type="button" class="btn btn-default" onclick="changeMap('SP.RUR.TOTL','#container-4','YR2010');">
+								YR2010
+							</button>
+							<button type="button" class="btn btn-default" onclick="changeMap('SP.RUR.TOTL','#container-4','YR2011');">
+								YR2011
+							</button>
+							<button type="button" class="btn btn-default" onclick="changeMap('SP.RUR.TOTL','#container-4','YR2012');">
+								YR2012
+							</button>
+							<button type="button" class="btn btn-default" onclick="changeMap('SP.RUR.TOTL','#container-4','YR2013');">
+								YR2013
+							</button>
+							<button type="button" class="btn btn-default" onclick="changeMap('SP.RUR.TOTL','#container-4','YR2014');">
+								YR2014
+							</button>
+							<button type="button" class="btn btn-default" onclick="seeChange('SP.RUR.TOTL','#container-4');">
+								See Changes
+							</button>
+							<div id="container-4"></div>		
+							<svg>
+								<radialGradient id="tip">
+								<stop offset="0" stop-color="white"/>
+								<stop offset="0.2" stop-color="pink"/>
+								<stop offset="1" stop-color="white"/>
+								</radialGradient>
+							</svg>
+							<script type="text/javascript">
+							makeMap('SP.RUR.TOTL','#container-4',"YR2010");
+							</script>
+							
+						</p>
+					</div>
+					<div class="tab-pane active" id="panel-5">
+						<p>	
+							<button type="button" class="btn btn-default" onclick="changeMap('SP.POP.TOTL.FE.ZS','#container-5','YR2010');">
+								YR2010
+							</button>
+							<button type="button" class="btn btn-default" onclick="changeMap('SP.POP.TOTL.FE.ZS','#container-5','YR2011');">
+								YR2011
+							</button>
+							<button type="button" class="btn btn-default" onclick="changeMap('SP.POP.TOTL.FE.ZS','#container-5','YR2012');">
+								YR2012
+							</button>
+							<button type="button" class="btn btn-default" onclick="changeMap('SP.POP.TOTL.FE.ZS','#container-5','YR2013');">
+								YR2013
+							</button>
+							<button type="button" class="btn btn-default" onclick="changeMap('SP.POP.TOTL.FE.ZS','#container-5','YR2014');">
+								YR2014
+							</button>
+							<button type="button" class="btn btn-default" onclick="seeChange('SP.POP.TOTL.FE.ZS','#container-5');">
+								See Changes
+							</button>
+							<div id="container-5"></div>		
+							<svg>
+								<radialGradient id="tip">
+								<stop offset="0" stop-color="white"/>
+								<stop offset="0.2" stop-color="pink"/>
+								<stop offset="1" stop-color="white"/>
+								</radialGradient>
+							</svg>
+							<script type="text/javascript">
+							makeMap('SP.POP.TOTL.FE.ZS','#container-5',"YR2010");
+							</script>
+							
+						</p>
+					</div>
+					<div class="tab-pane" id="panel-6">
+						<p>
+							<button type="button" class="btn btn-default" onclick="changeMap('SP.POP.GROW','#container-6','YR2010');">
+								YR2010
+							</button>
+							<button type="button" class="btn btn-default" onclick="changeMap('SP.POP.GROW','#container-6','YR2011');">
+								YR2011
+							</button>
+							<button type="button" class="btn btn-default" onclick="changeMap('SP.POP.GROW','#container-6','YR2012');">
+								YR2012
+							</button>
+							<button type="button" class="btn btn-default" onclick="changeMap('SP.POP.GROW','#container-6','YR2013');">
+								YR2013
+							</button>
+							<button type="button" class="btn btn-default" onclick="changeMap('SP.POP.GROW','#container-6','YR2014');">
+								YR2014
+							</button>
+							<button type="button" class="btn btn-default" onclick="seeChange('SP.POP.GROW','#container-6');">
+								See Changes
+							</button>
+							<div id="container-6"></div>		
+							<svg>
+								<radialGradient id="tip">
+								<stop offset="0" stop-color="white"/>
+								<stop offset="0.2" stop-color="pink"/>
+								<stop offset="1" stop-color="white"/>
+								</radialGradient>
+							</svg>
+							<script type="text/javascript">
+							makeMap('SP.POP.GROW','#container-6',"YR2010");
+							</script>
+							
+						</p>
+					</div>
+					<div class="tab-pane active" id="panel-7">
+						<p>	
+							<button type="button" class="btn btn-default" onclick="changeMap('SP.POP.TOTL','#container-7','YR2010');">
+								YR2010
+							</button>
+							<button type="button" class="btn btn-default" onclick="changeMap('SP.POP.TOTL','#container-7','YR2011');">
+								YR2011
+							</button>
+							<button type="button" class="btn btn-default" onclick="changeMap('SP.POP.TOTL','#container-7','YR2012');">
+								YR2012
+							</button>
+							<button type="button" class="btn btn-default" onclick="changeMap('SP.POP.TOTL','#container-7','YR2013');">
+								YR2013
+							</button>
+							<button type="button" class="btn btn-default" onclick="changeMap('SP.POP.TOTL','#container-7','YR2014');">
+								YR2014
+							</button>
+							<button type="button" class="btn btn-default" onclick="seeChange('SP.POP.TOTL','#container-7');">
+								See Changes
+							</button>
+							<div id="container-7"></div>		
+							<svg>
+								<radialGradient id="tip">
+								<stop offset="0" stop-color="white"/>
+								<stop offset="0.2" stop-color="pink"/>
+								<stop offset="1" stop-color="white"/>
+								</radialGradient>
+							</svg>
+							<script type="text/javascript">
+							makeMap('SP.POP.TOTL','#container-7',"YR2010");
+							</script>
+							
+						</p>
+					</div>
+					<div class="tab-pane active" id="panel-8">
+						<p>	
+							<button type="button" class="btn btn-default" onclick="changeMap('NY.GDP.PCAP.KD.ZG','#container-8','YR2010');">
+								YR2010
+							</button>
+							<button type="button" class="btn btn-default" onclick="changeMap('NY.GDP.PCAP.KD.ZG','#container-8','YR2011');">
+								YR2011
+							</button>
+							<button type="button" class="btn btn-default" onclick="changeMap('NY.GDP.PCAP.KD.ZG','#container-8','YR2012');">
+								YR2012
+							</button>
+							<button type="button" class="btn btn-default" onclick="changeMap('NY.GDP.PCAP.KD.ZG','#container-8','YR2013');">
+								YR2013
+							</button>
+							<button type="button" class="btn btn-default" onclick="changeMap('NY.GDP.PCAP.KD.ZG','#container-8','YR2014');">
+								YR2014
+							</button>
+							<button type="button" class="btn btn-default" onclick="seeChange('NY.GDP.PCAP.KD.ZG','#container-8');">
+								See Changes
+							</button>
+							<div id="container-8"></div>		
+							<svg>
+								<radialGradient id="tip">
+								<stop offset="0" stop-color="white"/>
+								<stop offset="0.2" stop-color="pink"/>
+								<stop offset="1" stop-color="white"/>
+								</radialGradient>
+							</svg>
+							<script type="text/javascript">
+							makeMap('NY.GDP.PCAP.KD.ZG','#container-8',"YR2010","YR2010");
+							</script>
+							
+						</p>
+					</div>
+					<div class="tab-pane active" id="panel-9">
+						<p>
+							<button type="button" class="btn btn-default" onclick="changeMap('NY.GDP.PCAP.CD','#container-9','YR2010');">
+								YR2010
+							</button>
+							<button type="button" class="btn btn-default" onclick="changeMap('NY.GDP.PCAP.CD','#container-9','YR2011');">
+								YR2011
+							</button>
+							<button type="button" class="btn btn-default" onclick="changeMap('NY.GDP.PCAP.CD','#container-9','YR2012');">
+								YR2012
+							</button>
+							<button type="button" class="btn btn-default" onclick="changeMap('NY.GDP.PCAP.CD','#container-9','YR2013');">
+								YR2013
+							</button>
+							<button type="button" class="btn btn-default" onclick="changeMap('NY.GDP.PCAP.CD','#container-9','YR2014');">
+								YR2014
+							</button>	
+							<button type="button" class="btn btn-default" onclick="seeChange('NY.GDP.PCAP.CD','#container-9');">
+								See Changes
+							</button>
+							<div id="container-9"></div>		
+							<svg>
+								<radialGradient id="tip">
+								<stop offset="0" stop-color="white"/>
+								<stop offset="0.2" stop-color="pink"/>
+								<stop offset="1" stop-color="white"/>
+								</radialGradient>
+							</svg>
+							<script type="text/javascript">
+							makeMap('NY.GDP.PCAP.CD','#container-9',"YR2010");
+							</script>
+							
+						</p>
+					</div>
+					<div class="tab-pane active" id="panel-10">
+						<p>	
+							<button type="button" class="btn btn-default" onclick="changeMap('SL.TLF.TOTL.IN','#container-10','YR2010');">
+								YR2010
+							</button>
+							<button type="button" class="btn btn-default" onclick="changeMap('SL.TLF.TOTL.IN','#container-10','YR2011');">
+								YR2011
+							</button>
+							<button type="button" class="btn btn-default" onclick="changeMap('SL.TLF.TOTL.IN','#container-10','YR2012');">
+								YR2012
+							</button>
+							<button type="button" class="btn btn-default" onclick="changeMap('SL.TLF.TOTL.IN','#container-10','YR2013');">
+								YR2013
+							</button>
+							<button type="button" class="btn btn-default" onclick="changeMap('SL.TLF.TOTL.IN','#container-10','YR2014');">
+								YR2014
+							</button>
+							<button type="button" class="btn btn-default" onclick="seeChange('SL.TLF.TOTL.IN','#container-10');">
+								See Changes
+							</button>
+							<div id="container-10"></div>		
+							<svg>
+								<radialGradient id="tip">
+								<stop offset="0" stop-color="white"/>
+								<stop offset="0.2" stop-color="pink"/>
+								<stop offset="1" stop-color="white"/>
+								</radialGradient>
+							</svg>
+							<script type="text/javascript">
+							makeMap('SL.TLF.TOTL.IN','#container-10',"YR2010");
+							</script>
+							
+						</p>
+					</div>
+					<div class="tab-pane active" id="panel-11">
+						<p>	
+							<button type="button" class="btn btn-default" onclick="changeMap('SL.TLF.TOTL.FE.ZS','#container-11','YR2010');">
+								YR2010
+							</button>
+							<button type="button" class="btn btn-default" onclick="changeMap('SL.TLF.TOTL.FE.ZS','#container-11','YR2011');">
+								YR2011
+							</button>
+							<button type="button" class="btn btn-default" onclick="changeMap('SL.TLF.TOTL.FE.ZS','#container-11','YR2012');">
+								YR2012
+							</button>
+							<button type="button" class="btn btn-default" onclick="changeMap('SL.TLF.TOTL.FE.ZS','#container-11','YR2013');">
+								YR2013
+							</button>
+							<button type="button" class="btn btn-default" onclick="changeMap('SL.TLF.TOTL.FE.ZS','#container-11','YR2014');">
+								YR2014
+							</button>
+							<button type="button" class="btn btn-default" onclick="seeChange('SL.TLF.TOTL.FE.ZS','#container-11');">
+								See Changes
+							</button>
+							<div id="container-11"></div>		
+							<svg>
+								<radialGradient id="tip">
+								<stop offset="0" stop-color="white"/>
+								<stop offset="0.2" stop-color="pink"/>
+								<stop offset="1" stop-color="white"/>
+								</radialGradient>
+							</svg>
+							<script type="text/javascript">
+							makeMap('SL.TLF.TOTL.FE.ZS','#container-11',"YR2010");
+							</script>
+							
+						</p>
+					</div>
+					<div class="tab-pane" id="panel-12">
+						<p>
+							<button type="button" class="btn btn-default" onclick="changeMap('MS.MIL.TOTL.TF.ZS','#container-12','YR2010');">
+								YR2010
+							</button>
+							<button type="button" class="btn btn-default" onclick="changeMap('MS.MIL.TOTL.TF.ZS','#container-12','YR2011');">
+								YR2011
+							</button>
+							<button type="button" class="btn btn-default" onclick="changeMap('MS.MIL.TOTL.TF.ZS','#container-12','YR2012');">
+								YR2012
+							</button>
+							<button type="button" class="btn btn-default" onclick="changeMap('MS.MIL.TOTL.TF.ZS','#container-12','YR2013');">
+								YR2013
+							</button>
+							<button type="button" class="btn btn-default" onclick="changeMap('MS.MIL.TOTL.TF.ZS','#container-12','YR2014');">
+								YR2014
+							</button>
+							<button type="button" class="btn btn-default" onclick="seeChange('MS.MIL.TOTL.TF.ZS','#container-12');">
+								See Changes
+							</button>
+							<div id="container-12"></div>		
+							<svg>
+								<radialGradient id="tip">
+								<stop offset="0" stop-color="white"/>
+								<stop offset="0.2" stop-color="pink"/>
+								<stop offset="1" stop-color="white"/>
+								</radialGradient>
+							</svg>
+							<script type="text/javascript">
+							makeMap('MS.MIL.TOTL.TF.ZS','#container-12',"YR2010");
+							</script>
+							
+						</p>
+					</div>
+					<div class="tab-pane active" id="panel-13">
+						<p>	
+							<button type="button" class="btn btn-default" onclick="changeMap('AG.SRF.TOTL.K2','#container-13','YR2010');">
+								YR2010
+							</button>
+							<button type="button" class="btn btn-default" onclick="changeMap('AG.SRF.TOTL.K2','#container-13','YR2011');">
+								YR2011
+							</button>
+							<button type="button" class="btn btn-default" onclick="changeMap('AG.SRF.TOTL.K2','#container-13','YR2012');">
+								YR2012
+							</button>
+							<button type="button" class="btn btn-default" onclick="changeMap('AG.SRF.TOTL.K2','#container-13','YR2013');">
+								YR2013
+							</button>
+							<button type="button" class="btn btn-default" onclick="changeMap('AG.SRF.TOTL.K2','#container-13','YR2014');">
+								YR2014
+							</button>
+							<button type="button" class="btn btn-default" onclick="seeChange('AG.SRF.TOTL.K2','#container-13');">
+								See Changes
+							</button>
+							<div id="container-13"></div>		
+							<svg>
+								<radialGradient id="tip">
+								<stop offset="0" stop-color="white"/>
+								<stop offset="0.2" stop-color="pink"/>
+								<stop offset="1" stop-color="white"/>
+								</radialGradient>
+							</svg>
+							<script type="text/javascript">
+							makeMap('AG.SRF.TOTL.K2','#container-13',"YR2010");
+							</script>
+							
+						</p>
+					</div>
+					<div class="tab-pane active" id="panel-14">
+						<p>	
+							<button type="button" class="btn btn-default" onclick="changeMap('EN.POP.DNST','#container-14','YR2010');">
+								YR2010
+							</button>
+							<button type="button" class="btn btn-default" onclick="changeMap('EN.POP.DNST','#container-14','YR2011');">
+								YR2011
+							</button>
+							<button type="button" class="btn btn-default" onclick="changeMap('EN.POP.DNST','#container-14','YR2012');">
+								YR2012
+							</button>
+							<button type="button" class="btn btn-default" onclick="changeMap('EN.POP.DNST','#container-14','YR2013');">
+								YR2013
+							</button>
+							<button type="button" class="btn btn-default" onclick="changeMap('EN.POP.DNST','#container-14','YR2014');">
+								YR2014
+							</button>
+							<button type="button" class="btn btn-default" onclick="seeChange('EN.POP.DNST','#container-14');">
+								See Changes
+							</button>
+							<div id="container-14"></div>		
+							<svg>
+								<radialGradient id="tip">
+								<stop offset="0" stop-color="white"/>
+								<stop offset="0.2" stop-color="pink"/>
+								<stop offset="1" stop-color="white"/>
+								</radialGradient>
+							</svg>
+							<script type="text/javascript">
+							makeMap('EN.POP.DNST','#container-14',"YR2010");
+							</script>
+							
+						</p>
+					</div>
+					<div class="tab-pane active" id="panel-15">
+						<p>	
+							<button type="button" class="btn btn-default" onclick="changeMap('AG.LND.ARBL.ZS','#container-15','YR2010');">
+								YR2010
+							</button>
+							<button type="button" class="btn btn-default" onclick="changeMap('AG.LND.ARBL.ZS','#container-15','YR2011');">
+								YR2011
+							</button>
+							<button type="button" class="btn btn-default" onclick="changeMap('AG.LND.ARBL.ZS','#container-15','YR2012');">
+								YR2012
+							</button>
+							<button type="button" class="btn btn-default" onclick="changeMap('AG.LND.ARBL.ZS','#container-15','YR2013');">
+								YR2013
+							</button>
+							<button type="button" class="btn btn-default" onclick="changeMap('AG.LND.ARBL.ZS','#container-15','YR2014');">
+								YR2014
+							</button>
+							<button type="button" class="btn btn-default" onclick="seeChange('AG.LND.ARBL.ZS','#container-15');">
+								See Changes
+							</button>
+							<div id="container-15"></div>		
+							<svg>
+								<radialGradient id="tip">
+								<stop offset="0" stop-color="white"/>
+								<stop offset="0.2" stop-color="pink"/>
+								<stop offset="1" stop-color="white"/>
+								</radialGradient>
+							</svg>
+							<script type="text/javascript">
+							makeMap('AG.LND.ARBL.ZS','#container-15',"YR2010");
+							</script>
+							
+						</p>
+					</div>
+					<div class="tab-pane" id="panel-16">
+						<p>
+							<button type="button" class="btn btn-default" onclick="changeMap('SL.UEM.TOTL.ZS','#container-16','YR2010');">
+								YR2010
+							</button>
+							<button type="button" class="btn btn-default" onclick="changeMap('SL.UEM.TOTL.ZS','#container-16','YR2011');">
+								YR2011
+							</button>
+							<button type="button" class="btn btn-default" onclick="changeMap('SL.UEM.TOTL.ZS','#container-16','YR2012');">
+								YR2012
+							</button>
+							<button type="button" class="btn btn-default" onclick="changeMap('SL.UEM.TOTL.ZS','#container-16','YR2013');">
+								YR2013
+							</button>
+							<button type="button" class="btn btn-default" onclick="changeMap('SL.UEM.TOTL.ZS','#container-16','YR2014');">
+								YR2014
+							</button>
+							<button type="button" class="btn btn-default" onclick="seeChange('SL.UEM.TOTL.ZS','#container-16');">
+								See Changes
+							</button>
+							<div id="container-16"></div>		
+							<svg>
+								<radialGradient id="tip">
+								<stop offset="0" stop-color="white"/>
+								<stop offset="0.2" stop-color="pink"/>
+								<stop offset="1" stop-color="white"/>
+								</radialGradient>
+							</svg>
+							<script type="text/javascript">
+							makeMap('SL.UEM.TOTL.ZS','#container-16',"YR2010");
+							</script>
+							
+						</p>
+					</div>
+					<div class="tab-pane active" id="panel-17">
+						<p>	
+							<button type="button" class="btn btn-default" onclick="changeMap('SL.UEM.TOTL.FE.ZS','#container-17','YR2010');">
+								YR2010
+							</button>
+							<button type="button" class="btn btn-default" onclick="changeMap('SL.UEM.TOTL.FE.ZS','#container-17','YR2011');">
+								YR2011
+							</button>
+							<button type="button" class="btn btn-default" onclick="changeMap('SL.UEM.TOTL.FE.ZS','#container-17','YR2012');">
+								YR2012
+							</button>
+							<button type="button" class="btn btn-default" onclick="changeMap('SL.UEM.TOTL.FE.ZS','#container-17','YR2013');">
+								YR2013
+							</button>
+							<button type="button" class="btn btn-default" onclick="changeMap('SL.UEM.TOTL.FE.ZS','#container-17','YR2014');">
+								YR2014
+							</button>
+							<button type="button" class="btn btn-default" onclick="seeChange('SL.UEM.TOTL.FE.ZS','#container-17');">
+								See Changes
+							</button>
+							<div id="container-17"></div>		
+							<svg>
+								<radialGradient id="tip">
+								<stop offset="0" stop-color="white"/>
+								<stop offset="0.2" stop-color="pink"/>
+								<stop offset="1" stop-color="white"/>
+								</radialGradient>
+							</svg>
+							<script type="text/javascript">
+							makeMap('SL.UEM.TOTL.FE.ZS','#container-17',"YR2010");
+							</script>
+							
+						</p>
+					</div>
+					
+				</div>
+			</div> 
+		</div>
+	</div>
+
+	
+
+	<div id="contain">
+		<br />
+	</div>
+	<div id="detail">
+			<!--linecharts-->
+		</div>
+	<div class="row">
+		<div class="col-md-12">
+			<p class="text-right">
+				2016.8 数据可视化与交互设计 Assignment 5
+			</p>
+			
+		</div>
+	</div>
+</div>
+
+    
+	
+  </body>
+</html>

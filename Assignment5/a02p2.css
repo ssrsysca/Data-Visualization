@@ -1,0 +1,86 @@
+
+svg {
+    font-size: 12px;
+    display: inline-block;
+}
+ .rect1{
+     margin-top: 4em;
+ }
+.foreground path {
+    fill: none;
+    stroke: #9582f5;
+    stroke-width: 0.5px;
+}
+
+.foreground path.fade {
+  stroke: #e2d223;
+  stroke-opacity: 0.05;
+}
+
+.brush .extent {
+  fill-opacity: .3;
+  stroke: #aff;
+  shape-rendering: crispEdges;
+}
+
+.axis line, .axis path {
+  fill: none;
+  stroke: #000;
+  shape-rendering: crispEdges;
+}
+
+.axis text {
+  text-shadow: 0 1px 0 #666;
+  cursor: move;
+  font-family: sans-serif;
+  
+ }
+ div{
+     display:inline-block;
+     position:absolute;
+     top: 3em;
+ }
+ select{
+     position:absolute;
+     top:-2em;
+ }
+ .xaxis line,.xaxis path{
+     fill:none;
+     stroke: red;
+     shape-rendering: auto;
+ }
+ .xaxis text{
+     text-shadow: 0 1px 0 #666;
+     fill: #ea2fae;
+     pointer-events: none;
+ }
+ .d3-tip {
+    background: rgba(0, 0, 0, 0.8) none repeat scroll 0 0;
+    border-radius: 2px;
+    color: #fff;
+    line-height: 1;
+    padding: 12px;
+}
+.d3-tip::after {
+    box-sizing: border-box;
+    color: rgba(0, 0, 0, 0.8);
+    content: "▼";
+    display: inline;
+    font-size: 10px;
+    line-height: 1;
+    pointer-events: none;
+    position: absolute;
+    text-align: center;
+    width: 100%;
+}
+.d3-tip.n::after {
+    left: 0;
+    margin: -1px 0 0;
+    top: 100%;
+}
+button {
+    border-radius:5px;
+    position:absolute;
+    right: 6em;
+    display: none;
+}
